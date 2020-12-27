@@ -6,10 +6,13 @@ This guide will show how to set up Polorproxy on a AWS EC2 Instance running in a
 * I am using Amazon Linux Distro 
 
 Refrences: 
+
 https://www.netresec.com/?page=Blog&month=2020-10&post=PolarProxy-in-Docker
 
-![AWS Diagram](https://github.com/patclarke/TLS-traffic-decryption/blob/main/Images/AWS_Diagram.png)
-![Proxy Diagram](https://github.com/patclarke/TLS-traffic-decryption/blob/main/Images/Proxy_Diagram.png)
+https://www.netresec.com/?page=PolarProxy
+
+![AWS Diagram](Images\AWS_Diagram.png)
+![Proxy Diagram](Images\Proxy_Diagram.png)
 
 
 ## Stection 1 Docker Container
@@ -70,5 +73,41 @@ Connection to ec2-1-1-2-2.us-northeast-3.compute.amazonaws.com 443 port [tcp/htt
 ```
 
 ## Section 3 Root CA 
+Download the cert to the client with either curl or by navigating to the url in a browser
+```
+curl ec2-1-1-2-2.us-northeast-3.compute.amazonaws.com:10080/polarproxy.cer --output polarproxy.cer
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1267    0  1267    0     0   4745      0 --:--:-- --:--:-- --:--:--  4763
+```
+You will need to install the Certificate in 2 ways. 1 for the OS and 2 for firefox. 
+
+How to install the cert for Windows:
+* Double click the polarproxy.cer file and in the General tab click Install Certificate...
+* Select "Local Machine", and Next
+* Select "Place all certificates in the following store", then click Browse...
+* Select "Trusted Root Certification Authorities", and ok
+* Now click "Next" and then "Finish"
+
+How to install the cert for Firefox:
+* Open Options
+* In the "Find in Options" search box type in "Certificate"
+* Select "View Certificates..."
+* This should open up  the "Authorities" tab. Select "Import..." and import the polarproxy.cer file
+* Seclect "Trust this CA to identify websites." and click "OK" and "OK" again
+
 ## Section 4 SOCKS proxy
+
+How to setup SOCKS forwarding from Client to EC2 instance:
+
+* ``` ssh -i C:\Users\%username%\Location_of_EC2_Pem_file\AL2Linux.pem -D 10443 -f -C -q -N ec2-user@ec2-1-1-2-2.us-northeast-3.compute.amazonaws.com ```
+
+* From Firefox: Options - Connection Settings - Configure Proxy Access to the Internet
+
+  SOCKS Host: localhost
+  
+  Port: 10443
+
+You should now be able to load a webpage in firefox. To confirm the Proxy is really working google "whats my ip" then in a browser other then firfox do the same thing. You should see 2 difforent public IP's for each. 
+
 ## Section 5 TLS inspection
