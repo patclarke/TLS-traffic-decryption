@@ -38,7 +38,7 @@ Then we are going to create the docker container
 ```
 docker create -p 443:10443 -p 10443:10443 -p 10080:10080 --name polarproxy polarproxy-image
 ```
-And now start the contrainer 
+And now start the container 
 ```
 docker start polarproxy
 ```
