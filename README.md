@@ -8,8 +8,8 @@ This guide will show how to set up Polorproxy on a AWS EC2 Instance running in a
 Refrences: 
 https://www.netresec.com/?page=Blog&month=2020-10&post=PolarProxy-in-Docker
 
-![AWS Diagram](Images\AWS_Diagram.png)
-![Proxy Diagram](Images\Proxy_Diagram.png)
+![AWS Diagram](https://github.com/patclarke/TLS-traffic-decryption/blob/main/Images/AWS_Diagram.png)
+![Proxy Diagram](https://github.com/patclarke/TLS-traffic-decryption/blob/main/Images/Proxy_Diagram.png)
 
 
 ## Stection 1 Docker Container
