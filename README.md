@@ -12,7 +12,6 @@ https://www.netresec.com/?page=Blog&month=2020-10&post=PolarProxy-in-Docker
 https://www.netresec.com/?page=PolarProxy
 
 ![AWS Diagram](https://github.com/patclarke/TLS-traffic-decryption/blob/main/Images/AWS_Diagram.png)
-![Proxy Diagram](https://github.com/patclarke/TLS-traffic-decryption/blob/main/Images/Proxy_Diagram.png)
 
 
 ## Stection 1 Docker Container
